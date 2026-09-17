@@ -1,12 +1,4 @@
-name: Build Docker Image
-on:
-  push:
-    branches: [main]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - name: Build Docker Image
-      run: docker build -t my-app-image .
+FROM python:3.9-slim
+WORKDIR /app
+COPY . /app
+CMD ["python", "main.py"]
